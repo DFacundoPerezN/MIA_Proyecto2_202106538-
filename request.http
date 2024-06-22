@@ -1,0 +1,14 @@
+###
+GET http://localhost:3000/admin/ciclo_for/7
+
+###
+POST http://localhost:3000/admin/register
+Content-Type: application/json
+
+{
+    "name": "Manolo",
+    "lastname": "Perez",
+    "user": "mondongoDB",
+    "email": "manolitoperez@sazon.usac.com",
+    "password": "123456"
+}
