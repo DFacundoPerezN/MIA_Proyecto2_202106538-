@@ -21,7 +21,7 @@ router.post('/register',[
     check('user', 'Username is required').not().isEmpty(),
     check('lastname', 'Lastname is required').not().isEmpty(),
     check('email', 'Email is required').isEmail(),
-    check('password', 'Password is required').isLength({ min: 6 }),
+    check('password', 'Password is required').isLength({ min: 5 }),
     validateAttributes
 ], adminController.register);
 
