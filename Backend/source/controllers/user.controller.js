@@ -30,7 +30,8 @@ const login = async (req, res) => {
         data: {
             user,
             //email,
-            password
+            password,
+            
         }
     });
 }

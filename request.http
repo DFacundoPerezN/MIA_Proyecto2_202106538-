@@ -6,18 +6,72 @@ POST http://localhost:3000/admin/register
 Content-Type: application/json
 
 {
-    "name": "Manolo",
-    "lastname": "Perez",
-    "user": "mondongoDB",
-    "email": "manolitoperez@sazon.usac.com",
+    "name": "Marco C",
+    "rol": "turist",
+    "user": "marcolag",
+    "email": "marcolag@sazon.usac.com",
     "password": "123456"
-}           
+}
+###
+POST http://localhost:3000/admin/registerFly
+Content-Type: application/json
+
+{
+    "name": "AeroMexico",
+    "origin": "Ciudad de Mexico",
+    "destiny": "Tahiti",
+    "days": 8,
+    "price": 2400
+}
+
+###
+POST http://localhost:3000/admin/registerCar
+Content-Type: application/json
+
+{
+    "name": "Hertz",
+    "brand": "Mitsubishi", 
+    "plate": "UWU898", 
+    "model": "Subaru", 
+    "price": "110", 
+    "city": "Ciudad de Guatemala"
+}
+
 
 ###
 POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
-    "user": "JP",
-    "password": "9879541321"
+    "user": "Josema",
+    "password": "123456"
 }
+
+###
+POST  http://localhost:3000/admin/delete/
+Content-Type: application/json
+
+{
+    "user": "marcolag",
+    "password": "123456"
+}
+
+###
+POST  http://localhost:3000/admin/deleteFly
+Content-Type: application/json
+
+{
+    "name": "AeroMexico",
+    "origin": "Ciudad de Mexico",
+    "destiny": "Tahiti",
+    "days": 8
+}
+
+###
+POST  http://localhost:3000/admin/deleteCar
+Content-Type: application/json
+
+{
+    "plate": "UWU898"
+}
+

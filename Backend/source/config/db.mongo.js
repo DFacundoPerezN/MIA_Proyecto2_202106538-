@@ -57,8 +57,37 @@ const comprobarData = async(database, data) => {
     }
 };
 
+const deleteData = async(database, data) => {
+    console.log('uri', uri);
+    const mongoClient = new MongoClient(uri);
+    try {
+        await mongoClient.connect();
+        const dbmongo = mongoClient.db('Usuarios'); //Usuarios representa la base de datos
+        const coleccion = dbmongo.collection(database);
+        const result = await coleccion.findOneAndDelete(data);
+
+        console.log('Resultado de la busqueda: ', result);
+        if(result !== null){
+
+            console.log('Contraseña correcta');
+            return result;
+        }
+        console.log('Contraseña y/o usuario incorrecto');
+        return result;
+
+    } catch (error) {
+        console.error('Error deleteData: ', error);
+        return error;
+    } finally {
+        await mongoClient.close();
+    }
+};
+
 
 module.exports ={
     insertData,
-    comprobarData
+    comprobarData,
+    deleteData,
+    insertFly,
+    insertCar
 };
