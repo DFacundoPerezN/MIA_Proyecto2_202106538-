@@ -31,7 +31,7 @@ router.post('/registerFly',[
     check('days', 'Days is required').isNumeric(),
     check('price', 'Price is required').isNumeric(),
     validateAttributes
-], adminController.registerFly);
+], adminController.registerFlight);
 
 router.post('/registerCar',[
     check('name', 'Name is required').not().isEmpty(),
@@ -56,7 +56,7 @@ router.post('/deleteFly',[
     check('destiny', 'Destiny is required').not().isEmpty(),
     check('days', 'Days is required').isNumeric(),
     validateAttributes
-], adminController.eliminationFly);
+], adminController.eliminationFlight);
 
 router.post('/deleteCar',[
     check('plate', 'Password is required').not().isEmpty(),

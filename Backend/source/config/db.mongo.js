@@ -65,14 +65,12 @@ const deleteData = async(database, data) => {
         const dbmongo = mongoClient.db('Usuarios'); //Usuarios representa la base de datos
         const coleccion = dbmongo.collection(database);
         const result = await coleccion.findOneAndDelete(data);
-
+        //console.log('Se busco: ', data);
         console.log('Resultado de la busqueda: ', result);
         if(result !== null){
-
-            console.log('Contraseña correcta');
             return result;
         }
-        console.log('Contraseña y/o usuario incorrecto');
+        console.log('No se encontró con los datos proporcionados');
         return result;
 
     } catch (error) {
@@ -83,11 +81,32 @@ const deleteData = async(database, data) => {
     }
 };
 
+const getData = async(database) => {
+    console.log('uri', uri);
+    const mongoClient = new MongoClient(uri);
+    try {
+        await mongoClient.connect();
+        const dbmongo = mongoClient.db('Usuarios'); //Usuarios representa la base de datos
+        const coleccion = dbmongo.collection(database);
+        const result = await coleccion.find().toArray();
+        //console.log('Resultado de la busqueda: ', result);
+        if(result !== null){
+            return result;
+        }
+        console.log('No se encontró con los datos proporcionados');
+        return result;
+
+    } catch (error) {
+        console.error('Error getData: ', error);
+        return error;
+    } finally {
+        await mongoClient.close();
+    }
+}
 
 module.exports ={
     insertData,
     comprobarData,
-    deleteData,
-    insertFly,
-    insertCar
+    deleteData, 
+    getData
 };

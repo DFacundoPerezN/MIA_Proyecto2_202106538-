@@ -6,13 +6,36 @@ POST http://localhost:3000/admin/register
 Content-Type: application/json
 
 {
+    "name": "Diego F Perez N",
+    "rol": "admin",
+    "user": "dfaxx",
+    "email": "dfaxx@sazon.usac.com",
+    "password": "admin01"
+}
+###     REGISTRAR USUARIO TOURIST
+POST http://localhost:3000/admin/register
+Content-Type: application/json
+
+{
     "name": "Marco C",
-    "rol": "turist",
+    "rol": "tourist",
     "user": "marcolag",
     "email": "marcolag@sazon.usac.com",
     "password": "123456"
 }
-###
+###     REGISTRAR USUARIO RECEPTIONIST
+POST http://localhost:3000/admin/register
+Content-Type: application/json
+
+{
+    "name": "Juan Pedro",
+    "rol": "receptionist",
+    "user": "Juanpe",
+    "email": "jp@sazon.usac.com",
+    "password": "123456"
+}
+
+###     REGISTRAR VUELO
 POST http://localhost:3000/admin/registerFly
 Content-Type: application/json
 
@@ -20,11 +43,11 @@ Content-Type: application/json
     "name": "AeroMexico",
     "origin": "Ciudad de Mexico",
     "destiny": "Tahiti",
-    "days": 8,
+    "days": "8",
     "price": 2400
 }
 
-###
+###     REGISTRAR VEHICULO
 POST http://localhost:3000/admin/registerCar
 Content-Type: application/json
 
@@ -38,7 +61,7 @@ Content-Type: application/json
 }
 
 
-###
+###     LOGIN
 POST http://localhost:3000/users/login
 Content-Type: application/json
 
@@ -47,7 +70,7 @@ Content-Type: application/json
     "password": "123456"
 }
 
-###
+###     BORRAR USUARIO
 POST  http://localhost:3000/admin/delete/
 Content-Type: application/json
 
@@ -56,7 +79,7 @@ Content-Type: application/json
     "password": "123456"
 }
 
-###
+###     BORRAR VUELO
 POST  http://localhost:3000/admin/deleteFly
 Content-Type: application/json
 
@@ -64,10 +87,10 @@ Content-Type: application/json
     "name": "AeroMexico",
     "origin": "Ciudad de Mexico",
     "destiny": "Tahiti",
-    "days": 8
+    "days": "8"
 }
 
-###
+###     BORRAR VEHICULO
 POST  http://localhost:3000/admin/deleteCar
 Content-Type: application/json
 
@@ -75,3 +98,50 @@ Content-Type: application/json
     "plate": "UWU898"
 }
 
+###     SOLICITUD DE RENTA DE CARRO
+POST  http://localhost:3000/users/carRequest
+Content-Type: application/json
+
+{
+    "user": "Josema",
+    "plate": "UWU898"
+}
+
+
+### SOLICITUD DE RESERVA DE VUELO
+POST  http://localhost:3000/users/flightRequest
+Content-Type: application/json
+
+{
+    "user": "marcolag",
+    "origin": "Ciudad de Mexico",
+    "destiny": "Tahiti",
+    "days": "8"
+}
+
+###     ELIMINAR SOLICITUD DE RENTA DE CARRO
+POST  http://localhost:3000/reception/deleteCarRequest
+Content-Type: application/json
+
+{
+    "user": "Josema",
+    "plate": "UWU898"
+}
+
+###     ELIMINAR SOLICITUD DE RESERVA DE VUELO
+POST  http://localhost:3000/reception/deleteFlightRequest
+Content-Type: application/json
+
+{
+    "user": "marcolag",
+    "origin": "Ciudad de Mexico",
+    "destiny": "Tahiti",
+    "days": "8"
+}
+
+###
+GET http://localhost:3000/users/getCars
+Content-Type: application/json
+###
+GET http://localhost:3000/reception/getRequests
+Content-Type: application/json

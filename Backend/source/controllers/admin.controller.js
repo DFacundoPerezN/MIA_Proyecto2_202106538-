@@ -62,7 +62,7 @@ const register = async (req, res) => {
 }
 
     ///Ruta para registrar un vuelo
-const registerFly = async (req, res) => {
+const registerFlight = async (req, res) => {
     const { name, origin, destiny, days, price } = req.body;
 
     //Manipulacion de datos e ingresarloa a la base de datos
@@ -164,7 +164,7 @@ const elimination = async (req, res) => {
     });
 }
 
-const eliminationFly = async (req, res) => {
+const eliminationFlight = async (req, res) => {
     const { name, origin, destiny, days } = req.body;
 
     //Manipulacion de datos e ingresarloa a la base de datos
@@ -226,9 +226,9 @@ const eliminationCar = async (req, res) => {
 module.exports = {
     ciclio_for,
     register,
-    registerFly,
+    registerFlight,
     registerCar,
     elimination,
-    eliminationFly,
+    eliminationFlight,
     eliminationCar
 };

@@ -19,5 +19,23 @@ router.post('/login',[
     validateAttributes
 ], userController.login);
 
+router.post('/carRequest',[
+    check('user', 'Username is required').not().isEmpty(),
+    check('plate', 'Plate is required').not().isEmpty(),
+    validateAttributes
+], userController.carRequest);
+
+router.post('/flightRequest',[
+    check('user', 'Username is required').not().isEmpty(),
+    check('origin', 'Origin is required').not().isEmpty(),
+    check('destiny', 'Destiny is required').not().isEmpty(),
+    check('days', 'Days is required').not().isEmpty(),
+    validateAttributes
+], userController.flightRequest);
+
+router.get('/getFlights',
+    userController.getFlights);
+router.get('/getCars',
+    userController.getCars);
 
 module.exports = router;
