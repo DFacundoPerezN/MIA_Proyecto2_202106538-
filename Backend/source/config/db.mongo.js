@@ -29,13 +29,13 @@ const insertData = async (database, data) => {
   }
 };
 
-const comprobarData = async (database, data) => {
+const comprobarData = async (collec, data) => {
   console.log('uri', uri);
   const mongoClient = new MongoClient(uri);
   try {
     await mongoClient.connect();
     const dbmongo = mongoClient.db(MONGO_DATABASE);
-    const coleccion = dbmongo.collection(database);
+    const coleccion = dbmongo.collection(collec);
     const result = await coleccion.findOne(data);
 
     console.log('Resultado de la busqueda: ', result);
@@ -54,13 +54,13 @@ const comprobarData = async (database, data) => {
   }
 };
 
-const deleteData = async (database, data) => {
+const deleteData = async (collec, data) => {
   console.log('uri', uri);
   const mongoClient = new MongoClient(uri);
   try {
     await mongoClient.connect();
     const dbmongo = mongoClient.db(MONGO_DATABASE);
-    const coleccion = dbmongo.collection(database);
+    const coleccion = dbmongo.collection(collec);
     const result = await coleccion.findOneAndDelete(data);
     console.log('Resultado de la busqueda: ', result);
     if (result !== null) {
@@ -77,13 +77,13 @@ const deleteData = async (database, data) => {
   }
 };
 
-const getData = async (database) => {
+const getData = async (collec) => {
   console.log('uri', uri);
   const mongoClient = new MongoClient(uri);
   try {
     await mongoClient.connect();
     const dbmongo = mongoClient.db(MONGO_DATABASE);
-    const coleccion = dbmongo.collection(database);
+    const coleccion = dbmongo.collection(collec);
     const result = await coleccion.find().toArray();
     if (result !== null) {
       return result;
