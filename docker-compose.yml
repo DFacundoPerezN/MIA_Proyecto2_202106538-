@@ -4,12 +4,12 @@ networks:
   mia:
     name: mia
     driver: bridge
-  
+
 services:
 
   mongo:
     image: mongo
-    container_name: database_mongodb_1
+    container_name: database_mongodb
     restart: always
     ports:
       - 27017:27017
@@ -18,7 +18,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: Proyecto2
     networks:
       - mia
-  
+
   api:
     build: ./Backend
     env_file:
