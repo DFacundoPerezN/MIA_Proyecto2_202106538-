@@ -1,0 +1,83 @@
+<main>
+    <div class="container">
+
+        <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+                        <div class="d-flex justify-content-center py-4">
+                            <a href="index.html" class="logo d-flex align-items-center w-auto">
+                                <img src="assets/img/logo.png" alt="">
+                                <span class="d-none d-lg-block">NiceAdmin</span>
+                            </a>
+                        </div><!-- End Logo -->
+
+                        <div class="card mb-3">
+
+                            <div class="card-body">
+
+                                <div class="pt-4 pb-2">
+                                    <h5 class="card-title text-center pb-0 fs-4">Create a Fly Trip</h5>
+                                    <p class="text-center small">Enter fly details</p>
+                                </div>
+
+                                <form [formGroup]="form_registroFly" (ngSubmit)="registrarVuelo()" class="row g-3 needs-validation" novalidate>  <!-- Aqui es donde se llama a la funcion con el formGroup como metodo para transportar datos-->
+                                    <div class="col-12">
+                                        <label for="nombre" class="form-label">Agency name</label>
+                                        <input 
+                                            formControlName="name"
+                                            type="text" name="name" class="form-control" id="name" required>
+                                        <div class="invalid-feedback">Please, enter Agency name!</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="origin" class="form-label">Origin (Ciudad origen del vuelo)</label>
+                                        <input 
+                                            formControlName="origin"
+                                            type="text" name="origin" class="form-control" id="origin" required>
+                                        <div class="invalid-feedback">Please, enter the origin city!</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="destino" class="form-label">Destiny (ciudad de destino)</label>
+                                        <input 
+                                            formControlName="destiny"
+                                            type="text" name="destino" class="form-control" id="destiny" required>
+                                        <div class="invalid-feedback">Please, enter the destiny</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="days" class="form-label">Days (dias de viaje)</label>
+                                        <input 
+                                            formControlName="days"
+                                            type="email" name="dias" class="form-control" id="day" required>
+                                        <div class="invalid-feedback">Please enter a number of days!</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="precio" class="form-label">Price (Precio del vuelo)</label>
+                                        <input 
+                                            formControlName="price"
+                                            type="price" name="price" class="form-control" id="price"
+                                            required>
+                                        <div class="invalid-feedback">Please enter the price!</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+</main><!-- End #main -->

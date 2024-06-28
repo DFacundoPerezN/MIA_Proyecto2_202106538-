@@ -1,0 +1,159 @@
+<main>
+    <div class="container">
+
+        <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+            <h3>Lista de Solicitudes</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Placa (Renta de Auto)</th>
+                        <th>Nombre de Usuario</th>
+                        <th>Destino (Reeserva Boleto)</th>
+                        <th>Origen (Reeserva Boleto)</th>
+                        <th>Dias de viaje (Reeserva Boleto)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let soli of solicitudes">
+                        <td>{{soli.type}}</td>
+                        <td>{{soli.plate}}</td>
+                        <td>{{soli.user}}</td>
+                        <td>{{soli.destiny}}</td>
+                        <td>{{soli.origin}}</td>
+                        <td>{{soli.days}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+                        <div class="d-flex justify-content-center py-4">
+                            <a href="index.html" class="logo d-flex align-items-center w-auto">
+                                
+                            </a>
+                        </div><!-- End Logo -->
+
+                        <div class="card mb-3">
+
+                            <div class="card-body">
+
+                                <div class="pt-4 pb-2">
+                                    <h5 class="card-title text-center pb-0 fs-4">Car rent Request</h5>
+                                    <p class="text-center small">Enter user and car plate</p>
+                                </div>
+
+                                <form [formGroup]="form_reception_car" (ngSubmit)="manejarSolicitudCarro()" class="row g-3 needs-validation" novalidate> <!-- -->
+
+                                    <div class="col-12">
+                                        <label for="usuario" class="form-label">User (Confrime nombre de usuario)</label>
+                                        <input 
+                                            formControlName="user"
+                                            type="text" name="usuario" class="form-control" id="user" required>
+                                        <div class="invalid-feedback">Please, enter your user name!</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="plate" class="form-label">Plate (placa)</label>
+                                        <input 
+                                            formControlName="plate"
+                                            type="plate" name="plate" class="form-control" id="plate"
+                                            required>
+                                        <div class="invalid-feedback">Please enter the plate!</div>
+                                    </div>
+
+                                    <label for="usuario" class="form-label">Aprobar o rechazar</label>
+                                    <div class="col-12">
+                                        <label for="estado" class="form-label"></label>
+                                        <select name="estado" id="estado" class="form-select">
+                                        <!-- formControlName="estado" --> 
+                                            <option value="aceptar">Aprobe</option>
+                                            <option value="rechazar">Reject</option>
+                                          </select>
+                                        <div class="invalid-feedback">Please, choose an option!</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button class="btn btn-primary w-100" type="submit">Enviar</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                        <div class="card mb-3">
+
+                            <div class="card-body">
+
+                                <div class="pt-4 pb-2">
+                                    <h5 class="card-title text-center pb-0 fs-4">Fly Request</h5>
+                                    <p class="text-center small">Enter user and fly details to enter</p>
+                                </div>
+
+                                <form [formGroup]="form_reception_flight" (ngSubmit)="manejarSolicitudVuelo()" class="row g-3 needs-validation" novalidate> <!-- -->
+
+                                    <div class="col-12">
+                                        <label for="nombre" class="form-label">User (confirme nombre usuario)</label>
+                                        <input 
+                                            formControlName="user"
+                                            type="text" name="user" class="form-control" id="user" required>
+                                        <div class="invalid-feedback">Please, enter user name!</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="origin" class="form-label">Origin (Ciudad origen del vuelo)</label>
+                                        <input 
+                                            formControlName="origin"
+                                            type="text" name="origin" class="form-control" id="origin" required>
+                                        <div class="invalid-feedback">Please, enter the origin city!</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="destino" class="form-label">Destiny (ciudad de destino)</label>
+                                        <input 
+                                            formControlName="destiny"
+                                            type="text" name="destino" class="form-control" id="destiny" required>
+                                        <div class="invalid-feedback">Please, enter the destiny</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <label for="days" class="form-label">Days (dias de viaje)</label>
+                                        <input 
+                                            formControlName="days"
+                                            type="email" name="dias" class="form-control" id="day" required>
+                                        <div class="invalid-feedback">Please enter a number of days!</div>
+                                    </div>
+
+
+                                    <div class="col-12">
+                                        <label for="estado" class="form-label"></label>
+                                        <select name="estado" id="estado" class="form-select">
+                                        <!-- formControlName="estado" -->
+                                            <option value="aceptar">Aprobe/Aprobar</option>
+                                            <option value="rechazar">Reject/Rechazar</option>
+                                          </select>
+                                        <div class="invalid-feedback">Please, enter Aprobe o Reject!</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button class="btn btn-primary w-100" type="submit">Enviar</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+</main>

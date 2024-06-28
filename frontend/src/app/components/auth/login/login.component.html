@@ -1,0 +1,68 @@
+<main>
+    <div class="container">
+
+        <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+                        <div class="d-flex justify-content-center py-4">
+                            <a href="index.html" class="logo d-flex align-items-center w-auto">
+                                
+                            </a>
+                        </div><!-- End Logo -->
+
+                        <div class="card mb-3">
+
+                            <div class="card-body">
+
+                                <div class="pt-4 pb-2">
+                                    <h5 class="card-title text-center pb-0 fs-4">Login</h5>
+                                    <p class="text-center small">Enter your account details to login</p>
+                                </div>
+
+                                <form [formGroup]="form_login" (ngSubmit)="logear()" class="row g-3 needs-validation" novalidate>
+
+                                    <div class="col-12">
+                                        <label for="usuario" class="form-label">User</label>
+                                        <input 
+                                            formControlName="user"
+                                            type="text" name="usuario" class="form-control" id="user" required>
+                                        <div class="invalid-feedback">Please, enter your user name!</div>
+                                    </div>
+
+                                    <!-- <div class="col-12">
+                                        <label for="correo" class="form-label">Email</label>
+                                        <input 
+                                            formControlName="email"
+                                            type="email" name="email" class="form-control" id="email" required>
+                                        <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                                    </div> -->
+
+
+                                    <div class="col-12">
+                                        <label for="password" class="form-label">Password</label>
+                                        <input 
+                                            formControlName="password"
+                                            type="password" name="password" class="form-control" id="password"
+                                            required>
+                                        <div class="invalid-feedback">Please enter your password!</div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button class="btn btn-primary w-100" type="submit">Enter</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+</main>
