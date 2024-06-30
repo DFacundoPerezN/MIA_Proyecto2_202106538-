@@ -2,6 +2,29 @@
     <div class="container">
 
         <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+
+            <h3>Lista de Usuarios</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre Completo</th>
+                        <th>Usuario</th>
+                        <th>Rol</th>
+                        <th>Correo</th>
+                        <th>Imagen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let usuario of arrayUsuarios">
+                        <td>{{usuario.name}}</td>
+                        <td>{{usuario.user}}</td>
+                        <td>{{usuario.rol}}</td>
+                        <td>{{usuario.email}}</td>
+                        <td><img *ngIf="pathAWS!==''" src="{{usuario.image}}" alt=""> </td>
+                    </tr>
+                </tbody>
+            </table>
+
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
@@ -37,6 +60,7 @@
                                         formControlName="rol">
                                             <option value="tourist">Turista</option>
                                             <option value="receptionist">Recepcionista</option>
+                                            <option value="admin">Administrador</option>
                                           </select>
                                         <div class="invalid-feedback">Please, enter your last name!</div>
                                     </div>
@@ -77,6 +101,17 @@
                                     </div>
 
                                     <div class="col-12">
+                                        <label for="image" class="form-label">Imagen</label>
+                                        <input 
+                                            type="file" name="imagen" 
+                                            class="form-control" 
+                                            id="image" 
+                                            accept="image/*"
+                                            (change)="onFileSelected($event)"
+                                            required>
+                                    </div>
+
+                                    <div class="col-12">
                                         <button class="btn btn-primary w-100" type="submit">Create Account</button>
                                     </div>
 
@@ -88,7 +123,7 @@
                     </div>
                 </div>
             </div>
-
+            <img *ngIf="pathAWS!==''" [src]="pathAWS" alt="">
         </section>
 
     </div>

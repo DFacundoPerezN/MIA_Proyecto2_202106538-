@@ -63,4 +63,7 @@ router.post('/deleteCar',[
     validateAttributes
 ], adminController.eliminationCar);
 
+router.get('/getUsers',
+    adminController.getPeople);
+
 module.exports = router;

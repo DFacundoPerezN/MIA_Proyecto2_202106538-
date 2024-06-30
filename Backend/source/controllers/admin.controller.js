@@ -1,6 +1,10 @@
 const { insertData } = require('../config/db.mongo');
 const { deleteData } = require('../config/db.mongo');
+const { getData } = require('../config/db.mongo');
 //const { bcrypt } = require('bcryptjs');
+const {uploadFile} = require('../config/bucket.js');
+const {uploadFile2} = require('../config/bucket.js');
+const { get } = require('../routes/admin.routes.js');
 
 const ciclio_for = async (req, res) => {
     const { number } = req.params;
@@ -24,12 +28,18 @@ const ciclio_for = async (req, res) => {
 };
 
 const register = async (req, res) => {
-    const { name, rol, user, email, password } = req.body;
+    const { path, image, name, rol, user, email, password } = req.body;
 
     //Manipulacion de datos e ingresarloa a la base de datos
-    console.log('Recived Data',name, rol, user, email, password);
+    console.log('Recived Data',name, rol, user, email,/* image, */ path, password);
+
+    await uploadFile2(path, image);
+    //const pathAWS = await uploadFile(path, image);
+    const pathAWS = `https://202106538t22024.s3.amazonaws.com/${path}`;
+    console.log('Path AWS', pathAWS);
 
     const result = await insertData('Usuarios',{
+        image: pathAWS,        
         name,
         rol,
         user,
@@ -42,22 +52,18 @@ const register = async (req, res) => {
             {
                 status: false,
                 message: 'Error al registrar ussuario en la base de datos',
-                data: result
+                data: result,
+                image: pathAWS
             }
         )
     }
 
     //Respuesta
-    res.status(200).json({
+    return res.status(200).json({
         status: 'success',
         message: 'Usuario registrado',
-        data: {
-            name,
-            rol,
-            user,
-            email,
-            password
-        }
+        data: result,
+        image: pathAWS
     });
 }
 
@@ -223,6 +229,26 @@ const eliminationCar = async (req, res) => {
     });
 }
 
+const getPeople = async (req, res) => {
+    console.log('Getting Users');
+    const result = await getData('Usuarios');
+  
+    if (result instanceof Error || result === null) {
+      return res.status(500).json({
+        status: false,
+        message: 'Error al obtener las solicitudes',
+        data: result
+      });
+    }
+  
+    // Respuesta
+    return res.status(200).json({
+      status: true,
+      message: 'Solicitudes obtenidas correctamente',
+      data: result
+    });
+}
+
 module.exports = {
     ciclio_for,
     register,
@@ -230,5 +256,6 @@ module.exports = {
     registerCar,
     elimination,
     eliminationFlight,
-    eliminationCar
+    eliminationCar,
+    getPeople
 };

@@ -28,5 +28,9 @@ router.post('/deleteFlightRequest',[
 
 router.get('/getRequests',
     receptionController.getRequests);
+    
+router.get('/getUsers',
+    receptionController.getPeople);
+    
 
 module.exports = router;

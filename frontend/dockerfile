@@ -2,13 +2,14 @@
 FROM node:20-alpine AS build
 WORKDIR /app
 COPY . .
-RUN npm i
+RUN npm i --legacy-peer-deps
 RUN npm run build --prod
 
 ### STAGE 2: Run ###
 FROM nginx:stable-alpine
-##Para local quitar
-COPY --from=build ./dist/frontend/browser /usr/share/nginx/html
+##Para local es  
+## PAra la EC2 --from=build /app/dist/frontend/browser /usr/share/nginx/html
+COPY --from=build /app/dist/frontend/browser /usr/share/nginx/html
 COPY ./nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
 # CMD ["nginx", "-g", "daemon off;

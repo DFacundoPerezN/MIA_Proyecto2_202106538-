@@ -26,6 +26,7 @@ export class IndexComponent {
     private router: Router
   ){}
 
+  //    MOSTRAR TABLA DE SOLICITUDES
   ngOnInit(): void {
     this.cargarSolicitudes();
   }

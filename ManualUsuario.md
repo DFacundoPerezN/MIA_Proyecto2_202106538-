@@ -1,6 +1,18 @@
 # AviCar
 AviCar el sistema que se desarrollará para el gestionamiento de viajes de todo turista alrededor del mundo. Con el fin de garantizar una completa y agradable experiencia en época de post pandemia. La finalidad es centralizar los datos y que el cliente haga la menor cantidad de validaciones al momento de planificar su viaje.
 
+#### Objetivos
+1. Aprender a administrar archivos y estructuras en NodeJS
+2.  Comprender la funcionalidad de un flujo de archivos JSON
+3.  Aplicar la teoría de archivos JSON
+4.  Utilizar un framework (Angular, React, Vue)
+5. Administrar los usuarios y permisos por medio de grupos
+6. Restringir y administrar el acceso a los archivos de modo administrador, cliente y recepcionista.
+7. Crear una aplicación visual
+8. Utilizar los servicios de una nube (para este proyecto utilizaremos AWS)
+9. Aprender el uso de una Base de Datos no relacional como MOngoDB
+
+
 # Funcionalidad
 ## Login
 El login es el área de iniciar sesión donde se pide que ingrese un usuario y su contraseña. Esto realizará una petición y búsqueda en la base de datos donde, según su rol como usuario, se le redirige a la página de usuario turista, recepcionista o administrador.

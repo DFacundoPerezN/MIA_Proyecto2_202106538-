@@ -34,6 +34,38 @@ const carRequest = async (req, res) => {
     });
 }
 
+const insertTrip = async (req, res) => {
+    const { user, origin, destiny, days } = req.body;
+    const {type} = 'Flight Reservation';
+
+    //Manipulacion de datos e ingresarloa a la base de datos
+    console.log('Recived Data: ', user, origin, destiny, days);
+
+    const result = await insertData('VuelosAprovado',{ //VuelosAprobados deberia representar la coleccion 
+        user, 
+        destiny,
+        origin,
+        days
+    });
+    
+    if(result instanceof Error || result === null){
+        return res.status(500).json(
+            {
+                status: false,
+                message: 'Error al registrar la solicitud de reserva de vuelo en base de datos',
+                data: result
+            }
+        )
+    }
+
+    //Respuesta
+    res.status(200).json({
+        status: 'success',
+        message: 'Solicitud de reserva vuelo registrada',
+        data: {user, type, days, origin, destiny}
+    });
+}
+
 const flightRequest = async (req, res) => {
     const { user, origin, destiny, days,type } = req.body;
 
@@ -86,8 +118,30 @@ const getRequests = async (req, res) => {
     });
 }
 
+const getPeople = async (req, res) => {
+    console.log('Getting Users');
+    const result = await getData('Usuarios');
+  
+    if (result instanceof Error || result === null) {
+      return res.status(500).json({
+        status: false,
+        message: 'Error al obtener las solicitudes',
+        data: result
+      });
+    }
+  
+    // Respuesta
+    return res.status(200).json({
+      status: true,
+      message: 'Solicitudes obtenidas correctamente',
+      data: result
+    });
+}
+
 module.exports = {
     carRequest,
     flightRequest,
-    getRequests
+    getRequests,
+    insertTrip,
+    getPeople
 };
