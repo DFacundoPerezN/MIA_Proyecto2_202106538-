@@ -21,6 +21,30 @@ export class IndexadminComponent {
     private router: Router
   ){}
 
+
+  vuelos: any[] = [];
+
+  //    MOSTRAR TABLA DE VUELOS
+  ngOnInit(): void {
+    this.cargarVuelos();
+  }
+
+  cargarVuelos(): void {
+    this.http.consult_get('/reception/getRequests').subscribe({
+      next: (data: any) => {
+        if (data.status) {
+          this.vuelos = Array.isArray(data.data) ? data.data : [];
+          console.log('Historial de vuelos: ',this.vuelos);
+        } else {
+          console.error('Error al obtener el historial de vuelos');
+        }
+      },
+      error: (error: any) => {
+        console.error('Error al intentar obtener y mostrar los vuelos', error);
+      }
+    });
+  }
+
   irRegistrarUsuario(){
     console.log('vamos a registrar usuario');
     this.router.navigate(['admin/register']);

@@ -249,6 +249,26 @@ const getPeople = async (req, res) => {
     });
 }
 
+const getHistory = async (req, res) => {
+    console.log('Getting history of flights');
+    const result = await getData('VuelosAprobados');
+  
+    if (result instanceof Error || result === null) {
+      return res.status(500).json({
+        status: false,
+        message: 'Error al obtener el historial de vuelos',
+        data: result
+      });
+    }
+  
+    // Respuesta
+    return res.status(200).json({
+      status: true,
+      message: 'Historial obtenid0 correctamente',
+      data: result
+    });
+}
+
 module.exports = {
     ciclio_for,
     register,
@@ -257,5 +277,6 @@ module.exports = {
     elimination,
     eliminationFlight,
     eliminationCar,
-    getPeople
+    getPeople,
+    getHistory
 };

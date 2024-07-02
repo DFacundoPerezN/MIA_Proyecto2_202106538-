@@ -9,8 +9,8 @@
                         <th>Tipo</th>
                         <th>Placa (Renta de Auto)</th>
                         <th>Nombre de Usuario</th>
-                        <th>Destino (Reeserva Boleto)</th>
                         <th>Origen (Reeserva Boleto)</th>
+                        <th>Destino (Reeserva Boleto)</th>
                         <th>Dias de viaje (Reeserva Boleto)</th>
                     </tr>
                 </thead>
@@ -19,8 +19,8 @@
                         <td>{{soli.type}}</td>
                         <td>{{soli.plate}}</td>
                         <td>{{soli.user}}</td>
-                        <td>{{soli.destiny}}</td>
                         <td>{{soli.origin}}</td>
+                        <td>{{soli.destiny}}</td>
                         <td>{{soli.days}}</td>
                     </tr>
                 </tbody>
@@ -63,20 +63,12 @@
                                             required>
                                         <div class="invalid-feedback">Please enter the plate!</div>
                                     </div>
-
-                                    <label for="usuario" class="form-label">Aprobar o rechazar</label>
                                     <div class="col-12">
-                                        <label for="estado" class="form-label"></label>
-                                        <select name="estado" id="estado" class="form-select">
-                                        <!-- formControlName="estado" --> 
-                                            <option value="aceptar">Aprobe</option>
-                                            <option value="rechazar">Reject</option>
-                                          </select>
-                                        <div class="invalid-feedback">Please, choose an option!</div>
+                                        <button class="btn btn-primary w-100" type="submit" >Aceptar</button>
                                     </div>
 
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100" type="submit">Enviar</button>
+                                        <button class="btn btn-primary w-100" style="background-color: crimson;" type="submit">Rechazar</button>
                                     </div>
 
                                 </form>
@@ -94,7 +86,7 @@
                                     <p class="text-center small">Enter user and fly details to enter</p>
                                 </div>
 
-                                <form [formGroup]="form_reception_flight" (ngSubmit)="manejarSolicitudVuelo()" class="row g-3 needs-validation" novalidate> <!-- -->
+                                <form [formGroup]="form_reception_flight" class="row g-3 needs-validation" novalidate> <!-- -->
 
                                     <div class="col-12">
                                         <label for="nombre" class="form-label">User (confirme nombre usuario)</label>
@@ -128,19 +120,13 @@
                                         <div class="invalid-feedback">Please enter a number of days!</div>
                                     </div>
 
-
                                     <div class="col-12">
-                                        <label for="estado" class="form-label"></label>
-                                        <select name="estado" id="estado" class="form-select">
-                                        <!-- formControlName="estado" -->
-                                            <option value="aceptar">Aprobe/Aprobar</option>
-                                            <option value="rechazar">Reject/Rechazar</option>
-                                          </select>
-                                        <div class="invalid-feedback">Please, enter Aprobe o Reject!</div>
+                                        <button class="btn btn-primary w-100" type="submit" formControlName="option" (click)="manejarSolicitudVuelo('a')">Aceptar</button>
                                     </div>
 
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100" type="submit">Enviar</button>
+                                        <button class="btn btn-primary w-100" style="background-color: crimson;" type="submit" 
+                                        formControlName="option"(click)="manejarSolicitudVuelo('r')">Rechazar</button>
                                     </div>
 
                                 </form>

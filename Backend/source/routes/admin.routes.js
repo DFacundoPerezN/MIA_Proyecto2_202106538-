@@ -66,4 +66,7 @@ router.post('/deleteCar',[
 router.get('/getUsers',
     adminController.getPeople);
 
+router.get('/getHistory',
+    adminController.getHistory);
+
 module.exports = router;

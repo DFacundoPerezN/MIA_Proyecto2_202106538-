@@ -83,14 +83,12 @@ export class RegistroComponent {
           next: (data: any) => {
             if(data.status === 'success'){
               console.log('Usuario registrado');
-              alert('Usuario registrado :D');
               console.log('IMAGEN: ', data.image)
               this.pathAWS = data.image;
               Swal.fire({
-                title: 'Usuario registrado',
-                text: 'Usuario registrado correctamente',
+                title: 'Ussuario registrado :D',
                 icon: 'success',
-                confirmButtonText: 'Aceptar'
+                confirmButtonText: 'OK :)'
               });
               // this.router.navigate(['']);
             }else{

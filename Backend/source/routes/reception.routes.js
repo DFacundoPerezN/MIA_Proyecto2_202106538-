@@ -29,8 +29,12 @@ router.post('/deleteFlightRequest',[
 router.get('/getRequests',
     receptionController.getRequests);
     
-router.get('/getUsers',
-    receptionController.getPeople);
-    
+router.post('/acceptFlightRequest',[
+    check('user', 'Username is required').not().isEmpty(),
+    check('origin', 'Origin is required').not().isEmpty(),
+    check('destiny', 'Destiny is required').not().isEmpty(),
+    check('days', 'Days is required').not().isEmpty(),
+    validateAttributes
+], receptionController.insertTrip);    
 
 module.exports = router;

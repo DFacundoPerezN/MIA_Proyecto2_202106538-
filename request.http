@@ -149,3 +149,7 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/admin/getUsers
 Content-Type: application/json
+
+###
+GET http://localhost:3000/admin/getHistory
+Content-Type: application/json

@@ -20,7 +20,7 @@
                         <td>{{usuario.user}}</td>
                         <td>{{usuario.rol}}</td>
                         <td>{{usuario.email}}</td>
-                        <td><img *ngIf="pathAWS!==''" src="{{usuario.image}}" alt=""> </td>
+                        <td><img src="{{usuario.image}}" height="100"> </td>
                     </tr>
                 </tbody>
             </table>
@@ -80,7 +80,6 @@
                                             type="email" name="email" class="form-control" id="email" required>
                                         <div class="invalid-feedback">Please enter a valid Email adddress!</div>
                                     </div>
-
 
                                     <div class="col-12">
                                         <label for="password" class="form-label">Password</label>

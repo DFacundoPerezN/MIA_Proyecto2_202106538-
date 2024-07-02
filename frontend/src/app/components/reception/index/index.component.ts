@@ -36,6 +36,7 @@ export class IndexComponent {
       next: (data: any) => {
         if (data.status) {
           this.solicitudes = Array.isArray(data.data) ? data.data : [];
+          console.log('Lista de solicitudes: ',this.solicitudes);
         } else {
           console.error('Error al obtener los vuelos');
         }
@@ -48,23 +49,19 @@ export class IndexComponent {
 
   form_reception_car = new FormGroup({
       user: new FormControl('', Validators.required),
-      plate: new FormControl(''),
+      plate: new FormControl('', Validators.required),
     });
 
   manejarSolicitudCarro(){
     if(this.form_reception_car.valid){
       //debugger;
-      // if(this.form_reception_car.value.plate !==  ''){
-
-      // }
       this.http.consult_post('/reception/deleteCarRequest', this.form_reception_car.value).subscribe({
 
         next: (data: any) => {
           if(data.status === 'success'){
-            //alert('Carrito eliminado con exito :D');
+            alert('Solicitud manejada con exito :D');
 
           }else{
-            //alert('Error al eliminar Carrito');
             console.log('Error al manejar la solicitud :(');
           }
         },
@@ -88,7 +85,8 @@ export class IndexComponent {
     days: new FormControl('', Validators.required),
   });
 
-  manejarSolicitudVuelo(){
+  manejarSolicitudVuelo(opcion: string){
+
   if(this.form_reception_flight.valid){
     //debugger;
     this.http.consult_post('/reception/deleteFlightRequest', this.form_reception_flight.value).subscribe({
@@ -96,7 +94,32 @@ export class IndexComponent {
       next: (data: any) => {
         if(data.status === 'success'){
           //alert('Carrito eliminado con exito :D');
+          if(opcion === 'a'){
+            console.log('Vuelo aceptado');
 
+            this.http.consult_post('/reception/acceptFlightRequest', this.form_reception_flight.value).subscribe({
+              next: (data: any) => {
+                if(data.status === 'success'){
+                  alert('Solicitud aprobada con exito :D');
+                  console.log('Vuelo aceptado');
+                }else{
+                  //alert('Error al eliminar Carrito');
+                  console.log('Error al manejar la solicitud :(');
+                }
+              },
+              error: (error: any) => {
+                console.log(error.errors[0]);
+                alert(`Error al manejar la solicitud de reserva de vuelo: ${error.errors}`);
+                console.log('Error al manejar la solicitud de renta');
+              }
+            });
+            
+          }else if (opcion === 'r'){
+            console.log('Solicitud Rechazada');
+            alert('Solicitud Rechazada correctamente');
+          }else{
+            console.log('Opcion no reconocida');
+          }
         }else{
           //alert('Error al eliminar Carrito');
           console.log('Error al manejar la solicitud :(');

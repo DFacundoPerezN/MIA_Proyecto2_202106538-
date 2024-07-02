@@ -54,7 +54,7 @@ export class ReserveflightComponent {
   reservarVuelo(){
     if(this.form_reserve_flight.valid){
       //debugger;
-      this.http.consult_post('/users/carRequest', this.form_reserve_flight.value).subscribe({
+      this.http.consult_post('/users/flightRequest', this.form_reserve_flight.value).subscribe({
         next: (data: any) => {
           if(data.status === 'success'){
             alert('Solicitud enviada :D');

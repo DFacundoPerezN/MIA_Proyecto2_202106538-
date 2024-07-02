@@ -2,11 +2,9 @@ version: '3.7'
 
 networks:
   mia:
-    name: mia
     driver: bridge
 
 services:
-
   mongo:
     image: mongo
     container_name: database_mongodb
